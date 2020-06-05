@@ -1,7 +1,10 @@
-require './music_explorer/version.rb'
+lib = File.expand_path('lib', __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'music_explorer/version.rb'
 
 Gem::Specification.new do |spec|
-  spec.name          = "Music Explorer"
+  spec.name          = "MusicExplorer"
   spec.version       = MusicExplorer::VERSION
   spec.authors       = ["William Dewey"]
   spec.email         = ["wkdewey@gmail.com"]
