@@ -1,13 +1,13 @@
-require_relative 'lib/test/cli/version'
+require './music_explorer/version.rb'
 
 Gem::Specification.new do |spec|
-  spec.name          = "test-cli"
-  spec.version       = Test::Cli::VERSION
-  spec.authors       = ["Your Name"]
+  spec.name          = "Music Explorer"
+  spec.version       = MusicExplorer::VERSION
+  spec.authors       = ["William Dewey"]
   spec.email         = ["wkdewey@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{This gem uses the Spotify API to explore music artists.}
+  spec.description   = %q{Users can search for an artist and discover their top tracks, albums, and similar artists.}
   spec.homepage      = "https://github.com/wkdewey/Music_Explorer_CLI-Data-Gem-Project"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/wkdewey/Music_Explorer_CLI-Data-Gem-Project"
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["changelog_uri"] = "https://github.com/wkdewey/Music_Explorer_CLI-Data-Gem-Project"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -26,4 +26,10 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.add_development_dependency "rake", "~> 12.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "pry"
+  spec.add_dependency "httparty"
+  spec.add_dependency "dotenv"
 end
