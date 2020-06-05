@@ -30,16 +30,16 @@ class MusicExplorer::CLI
   end
 
   def display_artist(artist)
-    puts "You have chosen #{artist}"
+    puts "You have chosen #{artist.name}"
     artist_options(artist)
   end
 
   def artist_options(artist)
     while true
     puts "Please select an option (1-4)"
-    puts "1. Display #{artist}'s top tracks"
-    puts "2. Display #{artist}'s albums"
-    puts "3. Display artists related to #{artist}"
+    puts "1. Display #{artist.name}'s top tracks"
+    puts "2. Display #{artist.name}'s albums"
+    puts "3. Display artists related to #{artist.name}"
     puts "4. Go back to main menu"
     user_choice = get_user_input.to_i
       case user_choice
@@ -56,17 +56,39 @@ class MusicExplorer::CLI
   end
 
   def display_top_tracks(artist)
-    puts "#{artist}'s top tracks are:"
+    puts "#{artist.name}'s top tracks are:"
+    if artist.top_tracks
+      artist.top_tracks.each_with_index do |track, index|
+        puts "#{index}. #{track}"
+      end
+    else
+      puts "Top tracks not available for #{artist.name}"
+    end
     artist_options(artist)
   end
 
   def display_albums(artist)
-    puts "#{artist} has released the following albums:"
+    if artist.albums
+      puts "#{artist.name} has released the following albums:"
+      artist.albums.each_with_index do |album, index|
+        puts "#{index}. #{album}"
+      end
+    else
+      puts "Albums not available for #{artist.name}"
+    end
+
     artist_options(artist)
   end
 
   def display_related_artists(artist)
-    puts "Here is a list of artists similar to #{artist}:"
+    if artist.related_artists
+      puts "Here is a list of artists similar to #{artist.name}:"
+      artist.related_artists.each_with_index do |related_artist, index|
+        puts "#{index}. #{related_artist}"
+      end
+    else
+      puts "Related artists not available for #{artist.name}"
+    end
     artist_options(artist)
   end
 
