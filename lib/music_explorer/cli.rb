@@ -1,12 +1,30 @@
 class MusicExplorer::CLI
 
+  attr_accessor :user_choice
+  
   def call
+    puts "Welcome to the Music Explorer!"
+    program_options
   end
 
   def program_options
+    while true
+      user_choice = get_user_input.to_i
+      puts "1. Search for an artist"
+      puts "2. Get more info about current artist"
+      puts "3. Leave program"
+      case user_choice
+      when 1
+        search_artists
+      when 2
+        artist_options
+      when 3
+        end_program
+    end
   end
 
   def search_artists
+    
   end
 
   def display_artist
@@ -24,7 +42,12 @@ class MusicExplorer::CLI
   def display_related_artists
   end
 
-  def exit
+  def get_user_input
+  end
+
+  def end_program
+    puts goodbye
+    exit
   end
 
 
