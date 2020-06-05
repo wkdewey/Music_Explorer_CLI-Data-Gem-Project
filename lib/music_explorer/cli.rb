@@ -24,7 +24,9 @@ class MusicExplorer::CLI
   end
 
   def search_artists
-    
+    puts "What artist would you like more info about?"
+    artist = self.get_user_input
+    display_artist(artist)
   end
 
   def display_artist
