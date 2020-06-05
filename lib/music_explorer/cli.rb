@@ -9,17 +9,14 @@ class MusicExplorer::CLI
 
   def program_options
     while true
-      puts "Please select an option (1-3)"
+      puts "Please select an option (1-2)"
       puts "1. Search for an artist"
-      puts "2. Get more info about current artist"
-      puts "3. Leave program"
+      puts "2. Leave program"
       user_choice = get_user_input.to_i
       case user_choice
       when 1
         search_artists
       when 2
-        artist_options
-      when 3
         end_program
       end
     end
@@ -38,7 +35,7 @@ class MusicExplorer::CLI
 
   def artist_options(artist)
     while true
-    puts "Please select an option (1-3)"
+    puts "Please select an option (1-4)"
     puts "1. Display #{artist}'s top tracks"
     puts "2. Display #{artist}'s albums"
     puts "3. Display artists related to #{artist}"
@@ -48,9 +45,9 @@ class MusicExplorer::CLI
       when 1
         display_top_tracks(artist)
       when 2
-        display_albums
+        display_albums(artist)
       when 3
-        display_related_artists
+        display_related_artists(artist)
       when 4
         program_options
       end
@@ -67,7 +64,7 @@ class MusicExplorer::CLI
     artist_options(artist)
   end
 
-  def display_related_artists
+  def display_related_artists(artist)
     puts "Here is a list of artists similar to #{artist}:"
     artist_options(artist)
   end
