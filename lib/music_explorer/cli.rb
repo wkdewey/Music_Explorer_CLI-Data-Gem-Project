@@ -3,6 +3,7 @@ class MusicExplorer::CLI
   attr_accessor :user_choice
   
   def call
+    #Welcome message, initially called by the executable program
     puts "Welcome to the Music Explorer!"
     program_options
   end
@@ -12,6 +13,7 @@ class MusicExplorer::CLI
       puts "Please select an option (1-2)"
       puts "1. Search for an artist"
       puts "2. Leave program"
+      puts
       user_choice = get_user_input.to_i
       case user_choice
       when 1
@@ -24,6 +26,7 @@ class MusicExplorer::CLI
 
   def search_artists
     puts "What artist would you like more info about?"
+    puts
     artist_query = self.get_user_input
     artist = MusicExplorer::Artist.lookup_and_create_artist(artist_query)
     display_artist(artist)
@@ -31,6 +34,7 @@ class MusicExplorer::CLI
 
   def display_artist(artist)
     puts "You have chosen #{artist.name}"
+    puts
     artist_options(artist)
   end
 
@@ -41,6 +45,7 @@ class MusicExplorer::CLI
     puts "2. Display #{artist.name}'s albums"
     puts "3. Display artists related to #{artist.name}"
     puts "4. Go back to main menu"
+    puts
     user_choice = get_user_input.to_i
       case user_choice
       when 1
@@ -57,10 +62,12 @@ class MusicExplorer::CLI
 
   def display_top_tracks(artist)
     puts "#{artist.name}'s top tracks are:"
+    puts
     if artist.top_tracks
       artist.top_tracks.each_with_index do |track, index|
-        puts "#{index}. #{track}"
+        puts "#{index + 1}. #{track}"
       end
+    puts
     else
       puts "Top tracks not available for #{artist.name}"
     end
@@ -71,10 +78,12 @@ class MusicExplorer::CLI
     if artist.albums
       puts "#{artist.name} has released the following albums:"
       artist.albums.each_with_index do |album, index|
-        puts "#{index}. #{album}"
+        puts "#{index + 1}. #{album}"
       end
+      puts
     else
       puts "Albums not available for #{artist.name}"
+      puts
     end
 
     artist_options(artist)
@@ -84,10 +93,12 @@ class MusicExplorer::CLI
     if artist.related_artists
       puts "Here is a list of artists similar to #{artist.name}:"
       artist.related_artists.each_with_index do |related_artist, index|
-        puts "#{index}. #{related_artist}"
+        puts "#{index + 1}. #{related_artist}"
       end
+      puts
     else
       puts "Related artists not available for #{artist.name}"
+      puts
     end
     artist_options(artist)
   end

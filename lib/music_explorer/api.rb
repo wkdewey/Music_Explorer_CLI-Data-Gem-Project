@@ -30,9 +30,11 @@ class MusicExplorer::API
 
   def retrieve_albums
     #Get all of artists's albums from API in form of array
+    ["Album 1", "Album 2", "Album 3", "Album 4", "Album 5"]
   end
 
   def retrieve_related_artists
     #Get related artists from API in form of array
+    ["ABBA", "The Beatles", "Cam'ron", "The Dandy Warhols", "Eazy-E"]
   end
 end
