@@ -1,0 +1,2 @@
+class MusicExplorer::Artist
+end
