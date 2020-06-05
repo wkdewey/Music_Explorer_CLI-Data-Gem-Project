@@ -1,10 +1,12 @@
 require 'pry'
 require 'httparty'
+require 'dotenv/load'
 
+require_relative "music_explorer/version"
+require_relative "music_explorer/cli"
+require_relative "music_explorer/api"
+require_relative "music_explorer/artist"
 
-require_relative "music_explorer/cli.rb"
-require_relative "music_explorer/artist.rb"
-require_relative "music_explorer/api.rb"
 
 module MusicExplorer
 end

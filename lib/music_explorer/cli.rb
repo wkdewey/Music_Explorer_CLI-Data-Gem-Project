@@ -20,6 +20,7 @@ class MusicExplorer::CLI
         artist_options
       when 3
         end_program
+      end
     end
   end
 
@@ -45,6 +46,7 @@ class MusicExplorer::CLI
   end
 
   def get_user_input
+    gets.strip
   end
 
   def end_program
