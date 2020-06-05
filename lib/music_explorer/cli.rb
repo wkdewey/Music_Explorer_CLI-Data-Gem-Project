@@ -9,10 +9,11 @@ class MusicExplorer::CLI
 
   def program_options
     while true
-      user_choice = get_user_input.to_i
+      puts "Please select an option (1-3)"
       puts "1. Search for an artist"
       puts "2. Get more info about current artist"
       puts "3. Leave program"
+      user_choice = get_user_input.to_i
       case user_choice
       when 1
         search_artists
@@ -30,10 +31,13 @@ class MusicExplorer::CLI
     display_artist(artist)
   end
 
-  def display_artist
+  def display_artist(artist)
+    puts "You have chosen #{artist}"
+    artist_options
   end
 
   def artist_options
+    
   end
 
   def display_top_tracks
@@ -50,7 +54,7 @@ class MusicExplorer::CLI
   end
 
   def end_program
-    puts goodbye
+    puts "Goodbye!"
     exit
   end
 
