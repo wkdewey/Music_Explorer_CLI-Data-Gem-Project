@@ -18,17 +18,21 @@ class MusicExplorer::API
 
   def retrieve_name
     #Get name of artist based on search from API
+    #will just hard code until I implement the API interaction
+    @artist_query
   end
 
   def retrieve_top_tracks
-    #Get top tracks for artists from API
+    #Get top tracks for artists from API in form of array
+    #will return fake data until I implement the API
+    ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5", "Track 6", "Track 7", "Track 8", "Track 9", "Track 10"]
   end
 
   def retrieve_albums
-    #Get all of artists's albums from API
+    #Get all of artists's albums from API in form of array
   end
 
   def retrieve_related_artists
-    #Get related artists from API
+    #Get related artists from API in form of array
   end
 end
