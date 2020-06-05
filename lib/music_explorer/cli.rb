@@ -37,6 +37,7 @@ class MusicExplorer::CLI
   end
 
   def artist_options(artist)
+    while true
     puts "Please select an option (1-3)"
     puts "1. Display #{artist}'s top tracks"
     puts "2. Display #{artist}'s albums"
@@ -45,7 +46,7 @@ class MusicExplorer::CLI
     user_choice = get_user_input.to_i
       case user_choice
       when 1
-        display_top_tracks
+        display_top_tracks(artist)
       when 2
         display_albums
       when 3
@@ -53,15 +54,22 @@ class MusicExplorer::CLI
       when 4
         program_options
       end
+    end
   end
 
-  def display_top_tracks
+  def display_top_tracks(artist)
+    puts "#{artist}'s top tracks are:"
+    artist_options(artist)
   end
 
-  def display_albums
+  def display_albums(artist)
+    puts "#{artist} has released the following albums:"
+    artist_options(artist)
   end
 
   def display_related_artists
+    puts "Here is a list of artists similar to #{artist}:"
+    artist_options(artist)
   end
 
   def get_user_input
