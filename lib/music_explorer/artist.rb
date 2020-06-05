@@ -11,7 +11,9 @@ class MusicExplorer::Artist
 
   def self.lookup_artist(artist_query)
     artist_data = {}
-    artist_data[:name] = artist_query
+    api = MusicExplorer::API.new
+    artist_data = api.retrieve_data(artist_query)
+    # artist_data[:name] = artist_query
     artist_data
   end
 
