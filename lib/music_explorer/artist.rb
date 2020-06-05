@@ -10,14 +10,16 @@ class MusicExplorer::Artist
   end
 
   def self.lookup_artist(artist_query)
+    #Calls the API with the user's query, in order to get a hash of artist data
     artist_data = {}
-    api = MusicExplorer::API.new
-    artist_data = api.retrieve_data(artist_query)
+    api = MusicExplorer::API.new(artist_query)
+    artist_data = api.retrieve_data
     # artist_data[:name] = artist_query
     artist_data
   end
 
   def initialize(artist_data = nil)
+    #creates Artist object from the hash returned from the API
     if artist_data && artist_data.length > 0
       @name = artist_data[:name]
       @top_tracks = artist_data[:top_tracks]
