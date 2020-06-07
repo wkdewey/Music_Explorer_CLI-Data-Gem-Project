@@ -15,12 +15,12 @@ class MusicExplorer::API
 
   def get_artist_id
     #conduct the initial search, get the first result, and return the ID (necessary for other API calls)
-    search = HTTParty.get("#{@@base_url}search?q=#{@artist_query}&type=artist", 
+    url = "#{@@base_url}search?q=#{@artist_query}&type=artist"
+    search = HTTParty.get(url, 
       {headers: {"Authorization" => "Bearer #{@token}"}}
     )
     first_result = search["artists"]["items"][0]
     @id = first_result["id"]
-    binding.pry
   end
 
   def retrieve_data
@@ -35,8 +35,12 @@ class MusicExplorer::API
 
   def retrieve_name
     #Get name of artist based on search from API
-    #will just hard code until I implement the API interaction
-    @artist_query
+    #search for the artist
+    url = "#{@@base_url}artists/#{id}"
+    artist = HTTParty.get(url, 
+      {headers: {"Authorization" => "Bearer #{@token}"}}
+    )
+    artist["name"]
   end
 
   def retrieve_top_tracks
