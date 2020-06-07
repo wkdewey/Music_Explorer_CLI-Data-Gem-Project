@@ -59,7 +59,16 @@ class MusicExplorer::API
 
   def retrieve_albums
     #Get all of artists's albums from API in form of array
-    ["Album 1", "Album 2", "Album 3", "Album 4", "Album 5"]
+    url = "#{@@base_url}artists/#{id}/albums?country=US"
+    albums = HTTParty.get(url, 
+      {headers: {"Authorization" => "Bearer #{@token}"}}
+    )
+    binding.pry
+    albums_array = []
+    albums["items"].each do |album|
+      albums_array << album["name"]
+    end
+    albums_array
   end
 
   def retrieve_related_artists
