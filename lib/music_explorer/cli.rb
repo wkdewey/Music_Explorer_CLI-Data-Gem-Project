@@ -92,8 +92,8 @@ class MusicExplorer::CLI
   def display_related_artists(artist)
     if artist.related_artists
       puts "Here is a list of artists similar to #{artist.name}:"
-      artist.related_artists.each_with_index do |related_artist, index|
-        puts "#{index + 1}. #{related_artist}"
+      artist.related_artists.each_with_index do |artist, index|
+        puts "#{index + 1}. #{artist}"
       end
       puts
     else

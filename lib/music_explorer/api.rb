@@ -81,6 +81,5 @@ class MusicExplorer::API
       related_artists_array << artist["name"]
     end
     related_artists_array
-    binding.pry
   end
 end
