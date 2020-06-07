@@ -50,7 +50,11 @@ class MusicExplorer::API
     top_tracks = HTTParty.get(url, 
       {headers: {"Authorization" => "Bearer #{@token}"}}
     )
-    binding.pry
+    top_tracks_array = []
+    top_tracks["tracks"].each do |track|
+      top_tracks_array << track["name"]
+    end
+    top_tracks_array
   end
 
   def retrieve_albums
