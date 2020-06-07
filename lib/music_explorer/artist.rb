@@ -18,6 +18,10 @@ class MusicExplorer::Artist
     artist_data
   end
 
+  def self.all
+    @@all
+  end
+
   def initialize(artist_data = nil)
     #creates Artist object from the hash returned from the API
     if artist_data && artist_data.length > 0

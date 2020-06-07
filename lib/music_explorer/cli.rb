@@ -12,13 +12,16 @@ class MusicExplorer::CLI
     while true
       puts "Please select an option (1-2)"
       puts "1. Search for an artist"
-      puts "2. Leave program"
+      puts "2. View all artists explored in this session"
+      puts "3. Leave program"
       puts
       user_choice = get_user_input.to_i
       case user_choice
       when 1
         search_artists
       when 2
+        view_all_artists
+      when 3
         end_program
       end
     end
@@ -101,6 +104,12 @@ class MusicExplorer::CLI
       puts
     end
     artist_options(artist)
+  end
+
+  def view_all_artists
+    Artist.all.each_with_index do |artist, index|
+      puts "#{index + 1}. #{artist}"
+    end
   end
 
   def get_user_input
