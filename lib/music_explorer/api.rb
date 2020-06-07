@@ -63,7 +63,6 @@ class MusicExplorer::API
     albums = HTTParty.get(url, 
       {headers: {"Authorization" => "Bearer #{@token}"}}
     )
-    binding.pry
     albums_array = []
     albums["items"].each do |album|
       albums_array << album["name"]
@@ -73,6 +72,15 @@ class MusicExplorer::API
 
   def retrieve_related_artists
     #Get related artists from API in form of array
-    ["ABBA", "The Beatles", "Cam'ron", "The Dandy Warhols", "Eazy-E"]
+    url = "#{@@base_url}artists/#{id}/related-artists?country=US"
+    related_artists = HTTParty.get(url, 
+      {headers: {"Authorization" => "Bearer #{@token}"}}
+    )
+    related_artists_array = []
+    related_artists["artists"].each do |artist|
+      related_artists_array << artist["name"]
+    end
+    related_artists_array
+    binding.pry
   end
 end
