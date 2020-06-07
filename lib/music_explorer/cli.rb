@@ -107,9 +107,10 @@ class MusicExplorer::CLI
   end
 
   def view_all_artists
-    Artist.all.each_with_index do |artist, index|
-      puts "#{index + 1}. #{artist}"
+    MusicExplorer::Artist.all.each_with_index do |artist, index|
+      puts "#{artist.name}"
     end
+    puts
   end
 
   def get_user_input
