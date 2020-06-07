@@ -1,5 +1,8 @@
 class MusicExplorer::API
-  attr_accessor :artist_query, :artist_data, :token
+  attr_accessor :artist_query, :artist_data, :token, :id
+
+  @@base_url = "https://api.spotify.com/v1/"
+
   def initialize(artist_query)
     #initialize the API with credentials
     RSpotify.authenticate(ENV['CLIENT_ID'], ENV['CLIENT_SECRET'])
@@ -12,9 +15,11 @@ class MusicExplorer::API
 
   def get_artist_id
     #conduct the initial search, get the first result, and return the ID (necessary for other API calls)
-    search = HTTParty.get("https://api.spotify.com/v1/search?q=#{@artist_query}&type=artist", 
+    search = HTTParty.get("#{@@base_url}search?q=#{@artist_query}&type=artist", 
       {headers: {"Authorization" => "Bearer #{@token}"}}
     )
+    first_result = search["artists"]["items"][0]
+    @id = first_result["id"]
     binding.pry
   end
 
