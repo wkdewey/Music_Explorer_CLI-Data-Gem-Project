@@ -98,12 +98,20 @@ class MusicExplorer::CLI
       artist.related_artists.each_with_index do |artist, index|
         puts "#{index + 1}. #{artist}"
       end
-      puts
+      puts "Would you like to know more about these artists?"
+      user_choice = get_user_input.capitalize
+      if user_choice[0] == "Y"
+        explore_related_artists
+      end
     else
       puts "Related artists not available for #{artist.name}"
       puts
     end
     artist_options(artist)
+  end
+
+  def explore_related_artists
+    puts "Choose one of the above artists by number"
   end
 
   def view_all_artists
