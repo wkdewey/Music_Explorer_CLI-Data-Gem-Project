@@ -2,6 +2,7 @@ require 'pry'
 require 'httparty'
 require 'dotenv/load'
 require 'oauth2'
+require 'rspotify'
 
 require_relative "music_explorer/version"
 require_relative "music_explorer/cli"
