@@ -1,6 +1,9 @@
 class MusicExplorer::API
   attr_accessor :artist_query, :artist_data
   def initialize(artist_query)
+    #initialize the API with credentials
+    RSpotify.authenticate(ENV['CLIENT_ID'], ENV['CLIENT_SECRET'])
+    token = RSpotify.client_token
     #store artist that will be looked up from API
     @artist_query = artist_query
     #methods for authentication with Spotify and setup will go here
