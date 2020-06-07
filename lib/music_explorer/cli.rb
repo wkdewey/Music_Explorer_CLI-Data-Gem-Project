@@ -80,7 +80,7 @@ class MusicExplorer::CLI
   def display_albums(artist)
     if artist.albums
       puts "#{artist.name} has released the following albums (up to 20):"
-      artist.albums.each_with_index do |album, index|
+      artist.albums.uniq.each_with_index do |album, index|
         puts "#{index + 1}. #{album}"
       end
       puts
