@@ -46,7 +46,10 @@ class MusicExplorer::API
   def retrieve_top_tracks
     #Get top tracks for artists from API in form of array
     #will return fake data until I implement the API
-    ["Track 1", "Track 2", "Track 3", "Track 4", "Track 5", "Track 6", "Track 7", "Track 8", "Track 9", "Track 10"]
+    url = "#{@@base_url}artists/#{id}/top_tracks"
+    top_tracks = HTTParty.get(url, 
+      {headers: {"Authorization" => "Bearer #{@token}"}}
+    )
   end
 
   def retrieve_albums
