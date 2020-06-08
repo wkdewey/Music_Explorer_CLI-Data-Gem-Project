@@ -6,6 +6,7 @@ class MusicExplorer::API
   def initialize(artist_query)
     #initialize the API with credentials
     RSpotify.authenticate(ENV['CLIENT_ID'], ENV['CLIENT_SECRET'])
+    #get the token necessary to look up info from API
     @token = RSpotify.client_token
     #store artist that will be looked up from API
     @artist_query = artist_query

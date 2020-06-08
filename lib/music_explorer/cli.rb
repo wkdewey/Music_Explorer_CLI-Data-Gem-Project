@@ -1,6 +1,5 @@
 class MusicExplorer::CLI
 
-  attr_accessor :user_choice
   
   def call
     #Welcome message, initially called by the executable program
