@@ -17,9 +17,7 @@ class MusicExplorer::API
   def get_artist_id
     #conduct the initial search, get the first result, and return the ID (necessary for other API calls)
     url = "#{@@base_url}search?q=#{@artist_query}&type=artist"
-    search = HTTParty.get(url, 
-      {headers: {"Authorization" => "Bearer #{@token}"}}
-    )
+    search = retrieve_data_from_url(url)
     first_result = search["artists"]["items"][0]
     @id = first_result["id"]
   end
@@ -34,17 +32,25 @@ class MusicExplorer::API
     self.artist_data
   end
 
-  def retrive_data_from_url(url)
+  def retrieve_data_from_url(url)
     HTTParty.get(url, 
       {headers: {"Authorization" => "Bearer #{@token}"}}
     )
+  end
+
+  def return_array_with_names(array)
+    name_array = []
+    array.collect do |item|
+      name_array << item["name"]
+    end
+    name_array
   end
 
   def retrieve_name
     #Get name of artist based on search from API
     #search for the artist
     url = "#{@@base_url}artists/#{id}"
-    artist = retrive_data_from_url(url)
+    artist = retrieve_data_from_url(url)
     artist["name"]
   end
 
@@ -52,33 +58,21 @@ class MusicExplorer::API
     #Get top tracks for artists from API in form of array
     #will return fake data until I implement the API
     url = "#{@@base_url}artists/#{id}/top-tracks?country=US"
-    top_tracks = retrive_data_from_url(url)
-    top_tracks_array = []
-    top_tracks["tracks"].each do |track|
-      top_tracks_array << track["name"]
-    end
-    top_tracks_array
+    top_tracks = retrieve_data_from_url(url)
+    return_array_with_names(top_tracks["tracks"])
   end
 
   def retrieve_albums
     #Get all of artists's albums from API in form of array
     url = "#{@@base_url}artists/#{id}/albums?country=US"
-    albums = retrive_data_from_url(url)
-    albums_array = []
-    albums["items"].each do |album|
-      albums_array << album["name"]
-    end
-    albums_array
+    albums = retrieve_data_from_url(url)
+    return_array_with_names(albums["items"])
   end
 
   def retrieve_related_artists
     #Get related artists from API in form of array
     url = "#{@@base_url}artists/#{id}/related-artists?country=US"
-    related_artists = retrive_data_from_url(url)
-    related_artists_array = []
-    related_artists["artists"].each do |artist|
-      related_artists_array << artist["name"]
-    end
-    related_artists_array
+    related_artists = retrieve_data_from_url(url)
+    return_array_with_names(related_artists["artists"])
   end
 end

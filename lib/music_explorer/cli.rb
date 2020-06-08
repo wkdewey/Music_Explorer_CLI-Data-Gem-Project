@@ -14,7 +14,7 @@ class MusicExplorer::CLI
       puts "2. View all artists explored in this session"
       puts "3. Leave program"
       puts
-      user_choice = get_numbered_input
+      user_choice = get_numeric_input
       case user_choice
       when 1
         search_artists
@@ -44,22 +44,22 @@ class MusicExplorer::CLI
 
   def artist_options(artist)
     while true
-    puts "Please select an option (1-4)"
-    puts "1. Display #{artist.name}'s top tracks"
-    puts "2. Display albums by #{artist.name}"
-    puts "3. Display artists related to #{artist.name}"
-    puts "4. Go back to main menu"
-    puts
-    user_choice = get_numeric_input
+      puts "Please select an option (1-4)"
+      puts "1. Display #{artist.name}'s top tracks"
+      puts "2. Display albums by #{artist.name}"
+      puts "3. Display artists related to #{artist.name}"
+      puts "4. Go back to main menu"
+      puts
+      user_choice = get_numeric_input
       case user_choice
-      when 1
-        display_top_tracks(artist)
-      when 2
-        display_albums(artist)
-      when 3
-        display_related_artists(artist)
-      when 4
-        program_options
+        when 1
+          display_top_tracks(artist)
+        when 2
+          display_albums(artist)
+        when 3
+          display_related_artists(artist)
+        when 4
+          program_options
       end
     end
   end
@@ -91,7 +91,7 @@ class MusicExplorer::CLI
   def display_related_artists(artist)
     if artist.related_artists
       puts "Here is a list of artists similar to #{artist.name}:"
-      print_numbered_list(artist.related_artists.each_with_index)
+      print_numbered_list(artist.related_artists)
       puts "Would you like to know more about these artists? (Y/N)"
       user_choice = get_user_input.capitalize
       if user_choice[0] == "Y"
