@@ -13,7 +13,7 @@ class MusicExplorer::Artist
     #Calls the API with the user's query, in order to get a hash of artist data
     artist_data = {}
     api = MusicExplorer::API.new(artist_query)
-    artist_data = api.retrieve_data
+    artist_data = api.retrieve_artist_data
     # artist_data[:name] = artist_query
     artist_data
   end
