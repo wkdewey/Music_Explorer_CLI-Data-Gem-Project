@@ -37,7 +37,7 @@ class MusicExplorer::CLI
   end
 
   def display_artist(artist)
-    puts "Your search has matched #{artist.name}"
+    puts "Your search matched #{artist.name}"
     puts
     artist_options(artist)
   end
@@ -46,11 +46,11 @@ class MusicExplorer::CLI
     while true
     puts "Please select an option (1-4)"
     puts "1. Display #{artist.name}'s top tracks"
-    puts "2. Display #{artist.name}'s albums"
+    puts "2. Display albums by #{artist.name}"
     puts "3. Display artists related to #{artist.name}"
     puts "4. Go back to main menu"
     puts
-    user_choice = get_user_input.to_i
+    user_choice = get_numeric_input
       case user_choice
       when 1
         display_top_tracks(artist)
@@ -67,9 +67,7 @@ class MusicExplorer::CLI
   def display_top_tracks(artist)
     if artist.top_tracks
       puts "#{artist.name}'s top tracks are:"
-      artist.top_tracks.each_with_index do |track, index|
-        puts "#{index + 1}. #{track}"
-      end
+      print_numbered_list(artist.top_tracks)
     puts
     else
       puts "Top tracks not available for #{artist.name}"
@@ -80,9 +78,7 @@ class MusicExplorer::CLI
   def display_albums(artist)
     if artist.albums
       puts "#{artist.name}'s releases include the following albums (up to 20):"
-      artist.albums.uniq.each_with_index do |album, index|
-        puts "#{index + 1}. #{album}"
-      end
+      print_numbered_list(artist.albums.uniq)
       puts
     else
       puts "Albums not available for #{artist.name}"
@@ -95,9 +91,7 @@ class MusicExplorer::CLI
   def display_related_artists(artist)
     if artist.related_artists
       puts "Here is a list of artists similar to #{artist.name}:"
-      artist.related_artists.each_with_index do |artist, index|
-        puts "#{index + 1}. #{artist}"
-      end
+      print_numbered_list(artist.related_artists.each_with_index)
       puts "Would you like to know more about these artists? (Y/N)"
       user_choice = get_user_input.capitalize
       if user_choice[0] == "Y"
@@ -114,7 +108,7 @@ class MusicExplorer::CLI
     puts "Choose one of the above artists by number"
     user_choice = 0
     while user_choice < 1 || user_choice > 20
-      user_choice = get_user_input.to_i - 1
+      user_choice = get_numeric_input
     end
     puts
     search_artists(related_artists[user_choice])
@@ -129,6 +123,10 @@ class MusicExplorer::CLI
 
   def get_user_input
     gets.strip
+  end
+
+  def get_numeric_input
+    get_user_input.to_i
   end
 
   def print_numbered_list(array)
