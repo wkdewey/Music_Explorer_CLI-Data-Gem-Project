@@ -27,10 +27,12 @@ class MusicExplorer::CLI
     end
   end
 
-  def search_artists
-    puts "What artist would you like more info about?"
-    puts
-    artist_query = self.get_user_input
+  def search_artists(artist_query = nil)
+    if artist_query == nil
+      puts "What artist would you like more info about?"
+      puts
+      artist_query = self.get_user_input
+    end
     artist = MusicExplorer::Artist.lookup_and_create_artist(artist_query)
     display_artist(artist)
   end
@@ -98,10 +100,10 @@ class MusicExplorer::CLI
       artist.related_artists.each_with_index do |artist, index|
         puts "#{index + 1}. #{artist}"
       end
-      puts "Would you like to know more about these artists?"
+      puts "Would you like to know more about these artists? (Y/N)"
       user_choice = get_user_input.capitalize
       if user_choice[0] == "Y"
-        explore_related_artists
+        explore_related_artists(artist.related_artists)
       end
     else
       puts "Related artists not available for #{artist.name}"
@@ -110,8 +112,11 @@ class MusicExplorer::CLI
     artist_options(artist)
   end
 
-  def explore_related_artists
+  def explore_related_artists(related_artists)
     puts "Choose one of the above artists by number"
+    user_choice = get_user_input.to_i + 1
+    puts
+    search_artists(related_artists[user_choice])
   end
 
   def view_all_artists
