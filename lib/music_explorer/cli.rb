@@ -38,7 +38,7 @@ class MusicExplorer::CLI
   end
 
   def display_artist(artist)
-    puts "You have chosen #{artist.name}"
+    puts "Your search has matched #{artist.name}"
     puts
     artist_options(artist)
   end
@@ -66,9 +66,8 @@ class MusicExplorer::CLI
   end
 
   def display_top_tracks(artist)
-    puts "#{artist.name}'s top tracks are:"
-    puts
     if artist.top_tracks
+      puts "#{artist.name}'s top tracks are:"
       artist.top_tracks.each_with_index do |track, index|
         puts "#{index + 1}. #{track}"
       end
@@ -81,7 +80,7 @@ class MusicExplorer::CLI
 
   def display_albums(artist)
     if artist.albums
-      puts "#{artist.name} has released the following albums (up to 20):"
+      puts "#{artist.name}'s releases include the following albums (up to 20):"
       artist.albums.uniq.each_with_index do |album, index|
         puts "#{index + 1}. #{album}"
       end
@@ -131,6 +130,12 @@ class MusicExplorer::CLI
 
   def get_user_input
     gets.strip
+  end
+
+  def print_numbered_list(array)
+    array.each_with_index do |item, index|
+      puts "#{index + 1}. #{item}"
+    end
   end
 
   def end_program
