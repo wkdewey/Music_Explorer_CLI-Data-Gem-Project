@@ -10,7 +10,7 @@ class MusicExplorer::CLI
 
   def program_options
     while true
-      puts "Please select an option (1-2)"
+      puts "Please select an option (1-3)"
       puts "1. Search for an artist"
       puts "2. View all artists explored in this session"
       puts "3. Leave program"
@@ -114,7 +114,10 @@ class MusicExplorer::CLI
 
   def explore_related_artists(related_artists)
     puts "Choose one of the above artists by number"
-    user_choice = get_user_input.to_i + 1
+    user_choice = 0
+    while user_choice < 1 || user_choice > 20
+      user_choice = get_user_input.to_i - 1
+    end
     puts
     search_artists(related_artists[user_choice])
   end
