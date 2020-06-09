@@ -59,6 +59,7 @@ class MusicExplorer::API
     #will return fake data until I implement the API
     url = "#{@@base_url}artists/#{id}/top-tracks?country=US"
     top_tracks = retrieve_data_from_url(url)
+    binding.pry
     return_array_with_names(top_tracks["tracks"])
   end
 
