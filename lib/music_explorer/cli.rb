@@ -115,7 +115,7 @@ class MusicExplorer::CLI
   end
 
   def view_all_artists
-    MusicExplorer::Artist.all.each_with_index do |artist, index|
+    MusicExplorer::Artist.all.sort_by {|artist| artist.name}.each_with_index do |artist, index|
       puts "#{artist.name}"
     end
     puts

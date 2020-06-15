@@ -4,7 +4,6 @@ PATH
     MusicExplorer (0.0.1)
       dotenv
       httparty
-      oauth2
       rspotify
 
 GEM

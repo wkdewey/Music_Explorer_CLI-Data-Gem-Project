@@ -33,6 +33,5 @@ class MusicExplorer::Artist
     end
   end
 
-  
 
 end
