@@ -106,16 +106,16 @@ class MusicExplorer::CLI
 
   def explore_related_artists(related_artists)
     puts "Choose one of the above artists by number"
-    user_choice = -1
-    while user_choice < 1 || user_choice > 20
-      user_choice = get_numeric_input - 1
+    user_input = -1
+    while user_input < 1 || user_input > 20
+      user_input = get_numeric_input
     end
     puts
-    search_artists(related_artists[user_choice])
+    search_artists(related_artists[user_input + 1])
   end
 
   def view_all_artists
-    MusicExplorer::Artist.all.sort_by {|artist| artist.name}.each_with_index do |artist, index|
+    MusicExplorer::Artist.all.sort_by {|artist| artist.name}.3each_with_index do |artist, index|
       puts "#{artist.name}"
     end
     puts
