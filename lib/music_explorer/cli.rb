@@ -111,11 +111,11 @@ class MusicExplorer::CLI
       user_input = get_numeric_input
     end
     puts
-    search_artists(related_artists[user_input + 1])
+    search_artists(related_artists[user_input - 1])
   end
 
   def view_all_artists
-    MusicExplorer::Artist.all.sort_by {|artist| artist.name}.3each_with_index do |artist, index|
+    MusicExplorer::Artist.all.sort_by {|artist| artist.name}.each_with_index do |artist, index|
       puts "#{artist.name}"
     end
     puts
