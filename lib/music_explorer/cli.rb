@@ -34,12 +34,12 @@ class MusicExplorer::CLI
     end
     artist = MusicExplorer::Artist.lookup_and_create_artist(artist_query)
     display_artist(artist)
+    artist_options(artist)
   end
 
   def display_artist(artist)
     puts "Your search matched #{artist.name}"
     puts
-    artist_options(artist)
   end
 
   def artist_options(artist)
@@ -72,7 +72,6 @@ class MusicExplorer::CLI
     else
       puts "Top tracks not available for #{artist.name}"
     end
-    artist_options(artist)
   end
 
   def display_albums(artist)
@@ -84,8 +83,6 @@ class MusicExplorer::CLI
       puts "Albums not available for #{artist.name}"
       puts
     end
-
-    artist_options(artist)
   end
 
   def display_related_artists(artist)
@@ -101,7 +98,6 @@ class MusicExplorer::CLI
       puts "Related artists not available for #{artist.name}"
       puts
     end
-    artist_options(artist)
   end
 
   def explore_related_artists(related_artists)
