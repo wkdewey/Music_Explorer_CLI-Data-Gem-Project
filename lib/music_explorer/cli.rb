@@ -50,8 +50,7 @@ class MusicExplorer::CLI
       puts "3. Display artists related to #{artist.name}"
       puts "4. Go back to main menu"
       puts
-      user_choice = get_numeric_input
-      case user_choice
+      case get_numeric_input
         when 1
           display_top_tracks(artist)
         when 2
