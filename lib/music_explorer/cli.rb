@@ -46,18 +46,21 @@ class MusicExplorer::CLI
     while true
       puts "Please select an option (1-4)"
       puts "1. Display #{artist.name}'s top tracks"
-      puts "2. Display albums by #{artist.name}"
-      puts "3. Display artists related to #{artist.name}"
-      puts "4. Go back to main menu"
+      puts "2. Display #{artist.name}'s genres"
+      puts "3. Display albums by #{artist.name}"
+      puts "4. Display artists related to #{artist.name}"
+      puts "5. Go back to main menu"
       puts
       case get_numeric_input
         when 1
           display_top_tracks(artist)
         when 2
-          display_albums(artist)
+          display_genres(artist)
         when 3
-          display_related_artists(artist)
+          display_albums(artist)
         when 4
+          display_related_artists(artist)
+        when 5
           program_options
       end
     end
@@ -73,6 +76,10 @@ class MusicExplorer::CLI
     end
   end
 
+  def display_genres(artist)
+    
+  end
+
   def display_albums(artist)
     if artist.albums
       puts "#{artist.name}'s releases include the following albums (up to 20):"
@@ -86,9 +93,9 @@ class MusicExplorer::CLI
 
   def display_related_artists(artist)
     if artist.related_artists
-      puts "Here is a list of artists similar to #{artist.name}:"
+      puts "Here is a list of artists related to #{artist.name}:"
       print_numbered_list(artist.related_artists)
-      puts "Would you like to know more about these artists? (Y/N)"
+      puts "Would you like to learn more about these artists? (Y/N)"
       user_choice = get_user_input.capitalize
       if user_choice[0] == "Y"
         explore_related_artists(artist.related_artists)
