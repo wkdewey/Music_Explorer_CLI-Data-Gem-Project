@@ -101,12 +101,14 @@ class MusicExplorer::CLI
 
   def explore_related_artists(related_artists)
     puts "Choose one of the above artists by number"
-    user_input = -1
-    while user_input < 1 || user_input > 20
-      user_input = get_numeric_input
+    user_input = get_numeric_input
+    if user_input >=1 && user_input <= 20
+      puts
+      search_artists(related_artists[user_input - 1])
+    else
+      puts "Number out of range (1-20)"
+      explore_related_artists(related_artists)
     end
-    puts
-    search_artists(related_artists[user_input - 1])
   end
 
   def view_all_artists
