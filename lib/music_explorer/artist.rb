@@ -1,6 +1,6 @@
 class MusicExplorer::Artist
 
-  attr_accessor :name, :top_tracks, :albums, :related_artists
+  attr_accessor :name, :top_tracks, :albums, :genres, :related_artists
 
   @@all = []
   
@@ -24,6 +24,7 @@ class MusicExplorer::Artist
     #creates Artist object from the hash returned from the API
     if artist_data && artist_data.length > 0
       @name = artist_data[:name]
+      @genres = artist_data[:genres]
       @top_tracks = artist_data[:top_tracks]
       @albums = artist_data[:albums]
       @related_artists = artist_data[:related_artists]

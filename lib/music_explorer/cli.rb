@@ -68,7 +68,7 @@ class MusicExplorer::CLI
 
   def display_top_tracks(artist)
     if artist.top_tracks
-      puts "#{artist.name}'s top tracks are:"
+      puts "#{artist.name}'s top tracks on Spotify are:"
       print_numbered_list(artist.top_tracks)
     puts
     else
@@ -77,7 +77,13 @@ class MusicExplorer::CLI
   end
 
   def display_genres(artist)
-    
+    if artist.genres
+      puts "Spotify classifies #{artist.name} as having the following genres:"
+      print_numbered_list(artist.genres)
+    puts
+    else
+      puts "Genres not available for #{artist.name}"
+    end
   end
 
   def display_albums(artist)

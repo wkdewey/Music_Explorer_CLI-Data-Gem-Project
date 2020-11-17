@@ -26,6 +26,7 @@ class MusicExplorer::API
     #calls other methods (which interact directly with API) to fill out hash of artist data
     self.artist_data = {}
     self.artist_data[:name] = retrieve_name
+    self.artist_data[:genres] = retrieve_genres
     self.artist_data[:top_tracks] = retrieve_top_tracks
     self.artist_data[:albums] = retrieve_albums
     self.artist_data[:related_artists] = retrieve_related_artists
@@ -52,9 +53,14 @@ class MusicExplorer::API
     artist["name"]
   end
 
+  def retrieve_genres
+    url = "#{@@base_url}artists/#{id}"
+    artist = retrieve_data_from_url(url)
+    artist["genres"]
+  end
+
   def retrieve_top_tracks
-    #Get top tracks for artists from API in form of array
-    #will return fake data until I implement the API
+    #Get top tracks for artists from API in form of arrayxw
     url = "#{@@base_url}artists/#{id}/top-tracks?country=US"
     top_tracks = retrieve_data_from_url(url)
     return_array_with_names(top_tracks["tracks"])
