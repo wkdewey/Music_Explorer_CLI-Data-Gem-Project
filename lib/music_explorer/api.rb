@@ -39,11 +39,9 @@ class MusicExplorer::API
   end
 
   def return_array_with_names(array)
-    name_array = []
-    array.collect do |item|
-      name_array << item["name"]
+    array.map do |item|
+      item["name"]
     end
-    name_array
   end
 
   def retrieve_name
