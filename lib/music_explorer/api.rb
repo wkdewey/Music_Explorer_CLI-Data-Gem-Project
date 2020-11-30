@@ -34,6 +34,7 @@ class MusicExplorer::API
   end
 
   def retrieve_data_from_url(url)
+    url = URI.parse(URI.escape(url))
     HTTParty.get(url, 
       {headers: {"Authorization" => "Bearer #{@token}"}}
     )
