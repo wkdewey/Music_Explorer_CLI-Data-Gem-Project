@@ -1,6 +1,6 @@
 # Music_Explorer
 
-This gem enables users to learn more about music artists with data from the Spotify API. Users are prompted to search for an artist. The app returns the first search result from Spotify and allows users to see the artist's top tracks, album releases, or related artists. For the latter option, users can choose one of the related artists and view the same artist details. Finally, users can review a list of all artists they have browsed. The app makes use of the RSpotify gem for OAuth authentication, HTTParty to retrieve data from the API, and dotenv to store client_id and client_secret (this means that users will need to obtain their own credentials and store them in their own .env file).
+This gem enables users to learn more about music artists with data from the Spotify API. Users are prompted to search for an artist. The app returns the first search result from Spotify and allows users to see the artist's top tracks, album releases, genres or related artists. For the latter option, users can choose one of the related artists and view artist details for that artist in turn. Finally, users can review a list of all artists they have browsed. The app makes use of the RSpotify gem for OAuth authentication, HTTParty to retrieve data from the API, and dotenv to store client_id and client_secret. As explained below under Usage, this means that users will need to obtain their own credentials and store them in their own .env file.
 
 ## Installation
 
@@ -31,7 +31,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/wkdewey/Music_Explorer_CLI-Data-Gem-Project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/wkdewey/Music_Explorer_CLI-Data-Gem-Project/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 
