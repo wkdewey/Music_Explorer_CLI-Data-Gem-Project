@@ -9,9 +9,10 @@ class MusicExplorer::CLI
 
   def program_options
     while true
+      puts
       puts "Please select an option (1-3)"
       puts "1. Search for an artist"
-      puts "2. View all artists explored in this session"
+      puts "2. View all artists you have explored"
       puts "3. Leave program"
       puts
       user_choice = get_numeric_input
@@ -28,6 +29,7 @@ class MusicExplorer::CLI
 
   def search_artists(artist_query = nil)
     if artist_query == nil
+      puts
       puts "What artist would you like more info about?"
       puts
       artist_query = self.get_user_input
@@ -38,12 +40,14 @@ class MusicExplorer::CLI
   end
 
   def display_artist(artist)
+    puts
     puts "Your search matched #{artist.name}"
     puts
   end
 
   def artist_options(artist)
     while true
+      puts
       puts "Please select an option (1-4)"
       puts "1. Display #{artist.name}'s top tracks"
       puts "2. Display #{artist.name}'s genres"
@@ -68,30 +72,36 @@ class MusicExplorer::CLI
 
   def display_top_tracks(artist)
     if artist.top_tracks
-      puts "#{artist.name}'s top tracks on Spotify are:"
+      puts
+      puts "#{artist.name}'s top 10 tracks on Spotify are:"
       print_numbered_list(artist.top_tracks)
     puts
     else
+      puts
       puts "Top tracks not available for #{artist.name}"
     end
   end
 
   def display_genres(artist)
     if artist.genres
+      puts
       puts "Spotify classifies #{artist.name} as having the following genres:"
       print_numbered_list(artist.genres)
     puts
     else
+      puts
       puts "Genres not available for #{artist.name}"
     end
   end
 
   def display_albums(artist)
     if artist.albums
+      puts
       puts "#{artist.name}'s releases include the following albums (up to 20):"
       print_numbered_list(artist.albums.uniq)
       puts
     else
+      puts
       puts "Albums not available for #{artist.name}"
       puts
     end
@@ -99,6 +109,7 @@ class MusicExplorer::CLI
 
   def display_related_artists(artist)
     if artist.related_artists
+      puts
       puts "Here is a list of artists related to #{artist.name}:"
       print_numbered_list(artist.related_artists)
       puts "Would you like to learn more about these artists? (Y/N)"
@@ -107,12 +118,14 @@ class MusicExplorer::CLI
         explore_related_artists(artist.related_artists)
       end
     else
+      puts
       puts "Related artists not available for #{artist.name}"
       puts
     end
   end
 
   def explore_related_artists(related_artists)
+    puts
     puts "Choose one of the above artists by number"
     user_input = get_numeric_input
     if user_input >=1 && user_input <= 20
@@ -125,6 +138,8 @@ class MusicExplorer::CLI
   end
 
   def view_all_artists
+    puts
+    puts "Artists explored in this session:"
     MusicExplorer::Artist.all.sort_by {|artist| artist.name}.each_with_index do |artist, index|
       puts "#{artist.name}"
     end
