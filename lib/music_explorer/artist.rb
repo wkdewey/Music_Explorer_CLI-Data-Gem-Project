@@ -4,7 +4,7 @@ class MusicExplorer::Artist
 
   @@all = []
   
-  def self.lookup_and_create_artist(artist_query)
+  def self.create_artist(artist_query)
     artist_data = lookup_artist(artist_query)
     self.new(artist_data)
   end

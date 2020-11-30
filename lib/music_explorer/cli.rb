@@ -34,7 +34,7 @@ class MusicExplorer::CLI
       puts
       artist_query = self.get_user_input
     end
-    artist = MusicExplorer::Artist.lookup_and_create_artist(artist_query)
+    artist = MusicExplorer::Artist.create_artist(artist_query)
     display_artist(artist)
     artist_options(artist)
   end
