@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'music_explorer/version.rb'
 
 Gem::Specification.new do |spec|
-  spec.name          = "MusicExplorer"
+  spec.name          = "music_explorer"
   spec.version       = MusicExplorer::VERSION
   spec.authors       = ["William Dewey"]
   spec.email         = ["wkdewey@gmail.com"]
@@ -32,8 +32,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "pry"
-  spec.add_dependency "httparty"
-  spec.add_dependency "dotenv"
-  spec.add_dependency "rspotify"
+  spec.add_development_dependency "pry", "~> 0.13.1"
+  spec.add_dependency "httparty", "~> 0.17.3"
+  spec.add_dependency "dotenv", "~> 2.7.5"
+  spec.add_dependency "rspotify", "~> 2.8.0"
 end
