@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["wkdewey@gmail.com"]
 
   spec.summary       = %q{This gem uses the Spotify API to explore music artists.}
-  spec.description   = %q{Users can search for an artist and discover their top tracks, albums, and similar artists.}
+  spec.description   = %q{Users can search for an artist on Spotify and discover their top tracks, albums, and similar artists.}
   spec.homepage      = "https://github.com/wkdewey/Music_Explorer_CLI-Data-Gem-Project"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
