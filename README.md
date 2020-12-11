@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-You must obtain a client_id and client_secret from https://developer.spotify.com/dashboard and put them in your .env file. Then follow the instructions on the screen to search the API and choose the options described above. The app will store all artists you search for, and they can be retrieved from the main menu.
+You must obtain a client_id and client_secret from https://developer.spotify.com/dashboard and put them in your .env file. Start the program with `ruby bin/music_explorer`. Then follow the instructions on the screen to search the Spotify API and explore artists using the options described above. The app will store all artists you search for, and they can be retrieved from the main menu.
 
 ## Development
 
