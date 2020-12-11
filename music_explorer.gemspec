@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["wkdewey@gmail.com"]
 
   spec.summary       = %q{This gem uses the Spotify API to explore music artists.}
-  spec.description   = %q{Users can search for an artist on Spotify and discover their top tracks, albums, and similar artists.}
+  spec.description   = %q{This gem enables users to learn more about music artists with data from the Spotify API. Users are prompted to search for an artist. The app returns the first search result from Spotify and allows users to see the artist's top tracks, album releases, genres or related artists. For the latter option, users can choose one of the related artists and view artist details for that artist in turn. Finally, users can review a list of all artists they have browsed. The app makes use of the RSpotify gem for OAuth authentication, HTTParty to retrieve data from the API, and dotenv to store client_id and client_secret. As explained below under Usage, this means that users will need to obtain their own credentials from Spotify and store them in their own .env file. More info at https://github.com/wkdewey/Music_Explorer_CLI-Data-Gem-Project}
   spec.homepage      = "https://github.com/wkdewey/Music_Explorer_CLI-Data-Gem-Project"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
