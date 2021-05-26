@@ -7,7 +7,7 @@ RSpec.describe "MusicExplore::Artist" do
   artist = MusicExplorer::Artist.new(artist_data)
   context "when initialized with artist data" do
     it "has a name" do
-      expect(artist.new).to eq "Beyonce"
+      expect(artist.name).to eq "Beyonce"
     end
 
     it "has genres" do
@@ -28,6 +28,8 @@ RSpec.describe "MusicExplore::Artist" do
     it "is included in all artists" do
       expect(MusicExplorer::Artist.all).to include artist
     end
+  end
+  context "when creating an artist" do
 
   end
 
