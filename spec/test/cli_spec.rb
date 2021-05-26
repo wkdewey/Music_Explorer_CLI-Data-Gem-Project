@@ -5,7 +5,7 @@ RSpec.describe Test::Cli do
 
   
 
-  it "does something useful" do
-    expect(false).to eq(true)
-  end
+  # it "does something useful" do
+  #   expect(false).to eq(true)
+  # end
 end
