@@ -11,18 +11,19 @@ RSpec.describe "MusicExplore::Artist" do
     end
 
     it "has genres" do
+      expect(artist.genres).not_to be nil
     end
 
     it "has top_tracks" do
-
+      expect(artist.top_tracks).not_to be nil
     end
 
     it "has albums" do
-
+      expect(artist.albums).not_to be nil
     end
 
     it "has related artists" do
-
+      expect(artist.related_artists).not_to be nil
     end
 
     it "is included in all artists" do
@@ -30,7 +31,11 @@ RSpec.describe "MusicExplore::Artist" do
     end
   end
   context "when creating an artist" do
-
+    artist_query = "Bob Dylan"
+    MusicExplorer::Artist.create_artist(artist_query)
+    it "creates a new artist" do
+      expect(MusicExplorer::Artist.all.find { |artist| artist.name == "Bob Dylan" }).not_to be nil
+    end
   end
 
 end
