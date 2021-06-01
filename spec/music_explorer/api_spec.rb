@@ -14,4 +14,18 @@ RSpec.describe "MusicExplore::API" do
     end
   end
 
+  context "when retrieving data" do
+
+    artist_data = api.retrieve_artist_data
+    it "returns an artist_data object" do
+      expect(api.artist_data).not_to be nil
+    end
+
+    it "returns an artist_data object with information" do
+      expect(api.artist_data[:name]).not_to be nil
+    end
+  end
+
+
+
 end
