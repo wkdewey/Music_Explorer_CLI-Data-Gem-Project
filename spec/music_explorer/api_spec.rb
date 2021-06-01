@@ -23,6 +23,10 @@ RSpec.describe "MusicExplore::API" do
 
     it "returns an artist_data object with information" do
       expect(api.artist_data[:name]).not_to be nil
+      expect(api.artist_data[:name]).to eq "Beyoncé"
+      expect(api.artist_data[:genres]).not_to be nil
+      expect(api.artist_data[:top_tracks]).not_to be nil
+      expect(api.artist_data[:albums]).not_to be nil
     end
   end
 
