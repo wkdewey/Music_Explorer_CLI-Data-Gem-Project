@@ -2,7 +2,7 @@ require "rspec"
 require "spec_helper"
 require "./lib/music_explorer"
 
-RSpec.describe "MusicExplore::Artist" do
+RSpec.describe "MusicExplorer::Artist" do
   artist_data = {name: "Beyonce", genres: [], top_tracks: [], albums: [], related_artists: []}
   artist = MusicExplorer::Artist.new(artist_data)
   context "when initialized with artist data" do
