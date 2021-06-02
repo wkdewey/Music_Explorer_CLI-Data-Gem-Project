@@ -11,6 +11,12 @@ RSpec.describe "MusicExplore::API" do
 
     it "receives a client token for the API" do
       expect(api.token).not_to be nil
+      expect(api.token).to be_a(String)
+    end
+
+    it "returns the correct artist ID" do
+      expect(api.id).not_to be nil
+      expect(api.id).to be_a(String)
     end
   end
 
