@@ -37,5 +37,17 @@ RSpec.describe "MusicExplorer::Artist" do
       expect(MusicExplorer::Artist.all.find { |artist| artist.name == "Bob Dylan" }).not_to be nil
     end
   end
+  context "when looking up an artist" do
+    artist_query = "Bob Dylan"
+    artist_data = MusicExplorer::Artist.lookup_artist(artist_query)
+    it "returns artist data in a hash" do
+      expect(artist_data).not_to be nil
+      expect(artist_data).to be_a(Hash)
+    end
+    it "returns the correct artist" do
+      expect(artist_data[:name]).to eq("Bob Dylan")
+    end
+
+  end
 
 end

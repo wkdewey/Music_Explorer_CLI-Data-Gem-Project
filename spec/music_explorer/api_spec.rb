@@ -2,7 +2,7 @@ require "rspec"
 require "spec_helper"
 require "./lib/music_explorer"
 
-RSpec.describe "MusicExplore::API" do
+RSpec.describe "MusicExplorer::API" do
   api = MusicExplorer::API.new("Beyonce")
   context "when initialized with an artist query" do
     it "stores the artist" do
