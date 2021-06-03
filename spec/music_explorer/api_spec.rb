@@ -31,8 +31,13 @@ RSpec.describe "MusicExplore::API" do
       expect(api.artist_data[:name]).not_to be nil
       expect(api.artist_data[:name]).to eq "Beyoncé"
       expect(api.artist_data[:genres]).not_to be nil
+      expect(api.artist_data[:genres]).to be_a(Array)
       expect(api.artist_data[:top_tracks]).not_to be nil
+      expect(api.artist_data[:top_tracks]).to be_a(Array)
       expect(api.artist_data[:albums]).not_to be nil
+      expect(api.artist_data[:albums]).to be_a(Array)
+      expect(api.artist_data[:related_artists]).not_to be nil
+      expect(api.artist_data[:related_artists]).to be_a(Array)
     end
   end
 
